@@ -1,6 +1,7 @@
 from appium.webdriver.common.appiumby import AppiumBy
 import allure
 import time
+import os
 
 class LoginPage:
     def __init__(self, driver):
@@ -8,14 +9,26 @@ class LoginPage:
 
     def login(self, email, password):
         with allure.step("Enter email"):
-            self.driver.find_element(AppiumBy.XPATH, '//android.widget.EditText[@text="Enter Email"]').send_keys(email)
-            self.driver.save_screenshot("screenshots/step1_email.png")
+            email_field = self.driver.find_element(AppiumBy.XPATH, '//android.widget.EditText[@text="Enter Email"]')
+            if not email_field:
+                self.driver.save_screenshot("screenshots/error_email_field_not_found.png")
+                raise AssertionError("Email input field not found")
+            email_field.send_keys(email)
 
         with allure.step("Enter password"):
-            self.driver.find_element(AppiumBy.XPATH, '//android.widget.EditText[@text="Enter Password"]').send_keys(password)
-            self.driver.save_screenshot("screenshots/step2_password.png")
+            password_field = self.driver.find_element(AppiumBy.XPATH, '//android.widget.EditText[@text="Enter Password"]')
+            if not password_field:
+                self.driver.save_screenshot("screenshots/error_password_field_not_found.png")
+                raise AssertionError("Password input field not found")
+            password_field.send_keys(password)
 
         with allure.step("Tap login button"):
-            self.driver.find_element(AppiumBy.XPATH, '//android.widget.TextView[@text="Login"]').click()
-            self.driver.save_screenshot("screenshots/step3_login.png")
-            time.sleep(15)
+            login_btn = self.driver.find_element(AppiumBy.XPATH, '//android.widget.TextView[@text="Login"]')
+            if not login_btn:
+                self.driver.save_screenshot("screenshots/error_login_button_not_found.png")
+                raise AssertionError("Login button not found")
+            login_btn.click()
+
+        self.driver.save_screenshot("screenshots/Successfully_login.png")
+
+        time.sleep(10)
