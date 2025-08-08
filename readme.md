@@ -1,5 +1,5 @@
-# 📱 Appium Test Automation (Android) — POM + Allure + Screenshots
-This repository contains an automated test suite for an Android HR application using **Appium**, **Pytest**, and **Allure** reporting, structured with the 
+# 📱 Appium Test Automation (Android) — POM + Allure + Python
+This repository contains an automated test suite for an Android HR application using **Appium**, **Python**, **Pytest**, and **Allure** reporting, structured with the 
 **Page Object Model (POM)** design pattern. Each test includes **step-wise screenshots** for better traceability and debugging.
 ---
 ## Test Cases Included
@@ -12,24 +12,30 @@ This repository contains an automated test suite for an Android HR application u
 | `test_leave_application.py`  | Automates the leave application submission process      |
 
 ---
-## Prerequisites
+## Prerequisites 
 Before running the tests, ensure the following:
 - Python 3.8 or above installed
 - Java JDK installed and added to PATH
 - Appium server installed and running (GUI or CLI)
 - Android SDK and ADB configured correctly
 - A physical Android device connected with USB debugging enabled
+-  Node version is 18.17.1
 - Path Environment:
-  - The Node.js binary was found at: C:\Program Files\nodejs\node.EXE
-  - Node version is 18.17.1
-  - ANDROID_HOME is set to: C:\Users\MITHU\AppData\Local\Android\Sdk
+  - NodeJS: C:\Program Files\nodejs\node.EXE
+  - ANDROID_HOME: C:\Users\MITHU\AppData\Local\Android\Sdk
   - %ANDROID_HOME%\platform-tools
   - %ANDROID_HOME%\build-tools
   - %ANDROID_HOME%\tools
-  - JAVA_HOME is set to: C:\Program Files\Java\jdk-23
+  - JAVA_HOME: C:\Program Files\Java\jdk-23
   
-  
+## Dependencies
+requirements.txt
+  - Appium-Python-Client==3.1.1
+  - pytest==7.4.0
+  - pytest-order==1.2.0
+  - allure-pytest==2.13.2
 ---
+
 ## Installation
 
 1. Clone the repository:
@@ -40,7 +46,7 @@ Before running the tests, ensure the following:
 3. ```bash
    pip install -r requirements.txt
 
-Install Allure (if not already installed):
+- Install Allure (if not already installed):
 
 3. How to Run the Tests
   - Start Appium Server (ensure it's listening at http://localhost:4723/wd/hub)
@@ -67,20 +73,20 @@ Install Allure (if not already installed):
 📁 Project Structure
 ```bash
 project-root/
-├── pages/                     # Page object files
+├── pages/                     
 │   ├── login_page.py
 │   ├── attendance_page.py
 │   └── checkin_page.py
 │   └── leave_page.py
-├── tests/                     # Pytest test scripts
+├── tests/                     
 │   ├── test_login.py
 │   ├── test_attendance_report.py
 │   ├── test_check_in.py
 │   └── test_leave_application.py
 ├── utils/
-│   └── capabilities.py        # Desired capabilities setup
-├── screenshots/               # Captured screenshots by test steps
-├── conftest.py                # Fixtures and setup
-├── requirements.txt           # Dependency list
-└── README.md                  # This file
+│   └── capabilities.py        
+├── screenshots/               
+├── conftest.py                
+├── requirements.txt           
+└── README.md                 
    
