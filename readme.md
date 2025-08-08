@@ -64,6 +64,9 @@ requirements.txt
   - Execution order of tests is maintained using pytest-order.
   - Screenshots for each step are saved automatically in the screenshots/ folder.
   - Login is performed first as a precondition for other tests.
+  
+# Recording of Test Case Execution:
+https://drive.google.com/file/d/1C5pjeMYiDwamoEx_EjlAv1A9baNekF4O/view?usp=drive_link
 
 # Output of Allure Report:
 
